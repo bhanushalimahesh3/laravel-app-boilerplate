@@ -1,0 +1,27 @@
+{
+    "name": "bhanushalimahesh3/transformers",
+    "description": "boilterplate code to generate transformers",
+    "type": "library",
+    "authors": [
+        {
+            "name": "bhanushalimahesh3",
+            "email": "bhanushali.mahesh3@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+          "BhanushaliMahesh\\TransformerPackage\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BhanushaliMahesh\\TransformerPackage\\TransformerServiceProvider"
+            ]
+        }
+    },      
+    "require-dev": {
+        "orchestra/testbench": "^5.3"
+    }
+}

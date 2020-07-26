@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyExtend;
+
+class DummyClass extends Transformer
+{
+    public function transform($item)
+    {
+
+    }
+}
