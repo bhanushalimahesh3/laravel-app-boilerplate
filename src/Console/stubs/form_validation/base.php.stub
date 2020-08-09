@@ -1,0 +1,13 @@
+<?php
+namespace DummyNamespace;
+
+interface BaseRequestHandler {
+
+    public function commonRules($newRules = []);
+
+    public function commonDbData($newData = []);
+
+    public function commonAttributes($newAttributes = []);
+
+    public function commonMessages($newMessage = []);
+}

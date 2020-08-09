@@ -1,0 +1,35 @@
+<?php
+
+namespace DummyNamespace;
+
+trait DummyClass {
+
+    public function commonRules($newRules = [])
+    {
+        
+        $rules = [];
+
+        return array_merge($rules, $newRules);
+    }
+
+    public function commonDbData($newData = [])
+    {
+        $data = [];
+        return array_merge($data, $newData);
+    }
+
+    public function commonAttributes($newAttributes = [])
+    {
+        $attributes = [];
+
+        return array_merge($attributes, $newAttributes);
+    }
+
+    public function commonMessages($newMessage = [])
+    {
+        $message = [];
+
+        return array_merge($message, $newMessage);
+    }
+
+}

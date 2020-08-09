@@ -4,19 +4,15 @@ namespace BhanushaliMahesh\TransformerPackage;
 
 use Illuminate\Support\ServiceProvider;
 use BhanushaliMahesh\TransformerPackage\Console\InstallTransformerPackage;
-use BhanushaliMahesh\TransformerPackage\Transformer;
 use BhanushaliMahesh\TransformerPackage\Console\TransformerCommand;
+use BhanushaliMahesh\TransformerPackage\Console\FormValidationCommand;
+use BhanushaliMahesh\TransformerPackage\Console\HelperCommand;
 
 
 class TransformerServiceProvider extends ServiceProvider
 {
   public function register()
   {
-/*     $this->app->bind('BhanushaliMahesh\TransformerPackage\Transformer', function(){
-      return new Transformer;
-    }); */
-
-    //\Log::info('called register');
     $this->mergeConfigFrom(__DIR__.'/config/transformer_package.php', 'transformer_package');
   }
 
@@ -27,7 +23,9 @@ class TransformerServiceProvider extends ServiceProvider
 
       $this->commands([
         InstallTransformerPackage::class,
-        TransformerCommand::class
+        TransformerCommand::class,
+        FormValidationCommand::class,
+        HelperCommand::class
       ]);
 
       

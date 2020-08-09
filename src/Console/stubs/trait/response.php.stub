@@ -1,0 +1,54 @@
+<?php
+namespace DummyNamespace;
+
+use Illuminate\Http\Exceptions\HttpResponseException;
+
+trait ApiResponseTrait {
+
+    public function respondSuccess($message, $data = [])
+    {
+        return [ 'status' => true, 'message' => $message, 'data' => $data ];
+    }
+
+    public function respondFailed($message, $data = [])
+    {
+        return [ 'status' => false, 'message' => $message, 'data' => $data ];
+    }
+
+	public function successWithData($data = null, $message = null, $status = 200, $headers = [])
+	{
+		return response()->json(['response' => ['status' => 'success', 'message' => $message],
+								 'data' => $data], $status, $headers);
+	}
+
+	public function successWithoutData($message = null, $status = 200, $headers = [])
+	{
+		return response()->json(['response' => ['status' => 'success', 'message' => $message]], $status, $headers);
+	}
+
+	public function failedWithData($data = null, $message = null, $status = 200, $headers = [])
+	{
+		return response()->json(['response' => ['status' => 'error', 'message' => $message],
+								 'data' => $data], $status, $headers);
+	}
+
+	public function failedWithoutData($message = null, $status = 200, $headers = [])
+	{
+		return response()->json(['response' => ['status' => 'error', 'message' => $message]], $status, $headers);
+	}
+
+	public function error($message = null, $status = null, $headers = [])
+	{
+		return response()->json(['response' => ['status' => 'error', 'message' => $message]], $status, $headers);
+	}
+
+	public function validationError($validator)
+	{
+		$errorMessage = array_map(function($data){
+		    return $data[0];
+		}, $validator->errors()->messages());
+
+		throw new HttpResponseException($this->error(implode(' ', $errorMessage), 422));
+	}
+
+}

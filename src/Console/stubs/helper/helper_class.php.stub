@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyExtendClassNamespace;
+
+class DummyClass extends BaseHelper {
+
+    public function __construct()
+    {
+
+    }
+
+}

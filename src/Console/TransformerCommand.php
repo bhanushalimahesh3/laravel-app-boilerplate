@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class TransformerCommand extends GeneratorCommand
 {
-    protected $name = 'transformer-package:create';
+    protected $name = 'transformer-package:transformer-create';
 
     protected $description = 'Create a new transformer class';
 
@@ -15,10 +15,11 @@ class TransformerCommand extends GeneratorCommand
 
     const  DEFAULT_FOLDER= 'Transformer';
     const  USE_CLASS_PLACEHOLDER = 'DummyExtend';
+    const  STUB_FOLDER = '/stubs/transformers/';
 
     protected function getStub()
     {
-        return __DIR__ . '/stubs/transformer.php.stub';
+        return __DIR__ . self::STUB_FOLDER . 'transformer.php.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace)
@@ -63,7 +64,7 @@ class TransformerCommand extends GeneratorCommand
     
         // make sure we're starting from a clean state
         if (!File::exists($transformerBaseClassPath)) {
-            $content = file_get_contents(__DIR__ . '/stubs/base.php.stub');
+            $content = file_get_contents(__DIR__ . self::STUB_FOLDER . 'base.php.stub');
             $content = str_replace('DummyNamespace', $transformerBaseClassNamespace, $content);
             file_put_contents($transformerBaseClassPath, $content);        
             

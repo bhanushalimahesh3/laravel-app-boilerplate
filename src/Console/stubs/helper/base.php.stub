@@ -1,0 +1,31 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyTraitNamespace;
+
+class BaseHelper
+{
+    use ApiResponseTrait;
+
+    protected $_transformer;
+
+    public function transformItem($item, $transformerObject)
+	{
+		return $transformerObject->item($item);
+		
+	}
+
+	public function transformCollection($collection, $transformerObject)
+	{
+		return $transformerObject->collection($item);
+	}
+
+    /*
+        set transformer class instance
+    */
+	public function __get($attribute)
+	{
+		return $this->{$attribute};
+	}
+}
