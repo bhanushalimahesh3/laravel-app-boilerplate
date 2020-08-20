@@ -7,6 +7,7 @@ use BhanushaliMahesh\TransformerPackage\Console\InstallTransformerPackage;
 use BhanushaliMahesh\TransformerPackage\Console\TransformerCommand;
 use BhanushaliMahesh\TransformerPackage\Console\FormValidationCommand;
 use BhanushaliMahesh\TransformerPackage\Console\HelperCommand;
+use BhanushaliMahesh\TransformerPackage\Console\ViewCommand;
 
 
 class TransformerServiceProvider extends ServiceProvider
@@ -25,7 +26,8 @@ class TransformerServiceProvider extends ServiceProvider
         InstallTransformerPackage::class,
         TransformerCommand::class,
         FormValidationCommand::class,
-        HelperCommand::class
+        HelperCommand::class,
+        ViewCommand::class
       ]);
 
       

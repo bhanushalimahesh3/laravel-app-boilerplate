@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        {{-- include head tag elements --}}
+        @include('customer.layouts.partials.header')
+
+    </head>
+
+    <body>
+        @yield('content')
+    </body>
+
+    @include('customer.layouts.partials.js')
+</html>

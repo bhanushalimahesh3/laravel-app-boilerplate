@@ -14,6 +14,11 @@ return [
 
     'trait' => [
                     'path' => 'Traits'
+    ],
+
+    'view' => [
+                    'layout' => 'layouts', // i.e rsources/view/layouts
+                    'partials' => 'partials', // i.e respurces/views/partials
     ]
     
 ];
