@@ -72,60 +72,7 @@ class ViewManager
             $this->blade();
         }
 
-        dd($this->type);
-        /* // We see if the user has a custom stub
-        $userStub = resource_path('stubs/' . $this->stub['stub']);
-        $vendorStub = __DIR__ . '/stubs/' . $this->stub['stub'];
-
-        $stubPath = file_exists($userStub) ? $userStub : $vendorStub;
-
-        // If we cant find the stub at all simply fail.
-        if (!file_exists($stubPath)) {
-            throw new Exception ('Could not find stub in path ' . $stubPath);
-        }
-
-        // Try be helpful and create the output folder.
-        if (!file_exists($this->stub['output_path'])) {
-            mkdir($this->stub['output_path'], 0755, true);
-        }
-
-        // If the file already exists, sugest the user to delete it first.
-        $extension = pathinfo($stubPath, PATHINFO_EXTENSION);
-
-        if (str_contains($this->stub['stub'], '.blade.php')) {
-            $extension = 'blade.php';
-        }
-
-        $outputFile = rtrim($this->stub['output_path'], '/') . '/' . $this->getName() . '.' . $extension;
-
-        if ($forceOverwrite === false && file_exists($outputFile)) {
-            throw new Exception($outputFile . ' already exists, consider trying with "--force" to overwrite.');
-        }
-
-        // Set up the new file
-        $stubContent = file_get_contents($stubPath);
-
-        if (!isset($this->stub['placeholder'])) {
-            $this->stub['placeholder'] = '@placeholder';
-        }
-
-        $newContent = str_replace($this->stub['placeholder'], $this->getName(), $stubContent);
-
-        if (!empty($this->getParams())) {
-            foreach ($this->getParams() as $key => $stub) {
-                $newContent = str_replace($key, $stub, $newContent);
-            }
-        }
-
-        if (!file_exists($this->stub['output_path'])) {
-            mkdir($this->stub['output_path'], 0755, true);
-        }
-
-        if (!file_put_contents($outputFile, $newContent)) {
-            throw new Exception('Could not write to ' . $outputFile);
-        }
-
-        return $outputFile; */
+        return true;
     }
 
     private function layouts()
@@ -143,7 +90,7 @@ class ViewManager
         $layoutFolder = resource_path('views').'/'.config('transformer_package.view.layouts');
         
         if(is_dir($layoutFolder) === false) {
-            mkdir($layoutFolder, 0755);
+            mkdir($layoutFolder, 0755, true);
         }
 
         $auth = $layoutFolder.'/auth.blade.php';
@@ -156,13 +103,19 @@ class ViewManager
         // replace header string
         $authContent = file_get_contents($authStub);    
         $authContent = str_replace('partialHeader', 
-                                str_replace('/', '.', config('transformer_package.view.partials').'.header'), 
+                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.header')."'", 
                                 $authContent);
         $authContent = str_replace('partialJs', 
-                                str_replace('/', '.', config('transformer_package.view.partials').'.js'), 
+                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.js')."'", 
                                 $authContent);                        
         
         $guestContent = file_get_contents($guestStub);
+        $guestContent = str_replace('partialHeader', 
+                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.header')."'", 
+                                $guestContent);
+        $guestContent = str_replace('partialJs', 
+                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.js')."'", 
+                                $guestContent); 
 
         if (!file_put_contents($auth, $authContent)) {
             throw new Exception('Could not write to ' . $auth);
@@ -191,7 +144,7 @@ class ViewManager
         // check if guest or layour already exported
         $partialFolder = resource_path('views').'/'.config('transformer_package.view.partials');
         if(is_dir($partialFolder) === false) {
-            mkdir($partialFolder, 0755);
+            mkdir($partialFolder, 0755, true);
         }
 
         $css = $partialFolder.'/css.blade.php';
@@ -205,6 +158,9 @@ class ViewManager
         $jsContent = file_get_contents($jsStub);
         $cssContent = file_get_contents($cssStub);
         $headerContent = file_get_contents($headerStub);
+        $headerContent = str_replace('partialCss', 
+                                    "'".str_replace('/', '.', config('transformer_package.view.partials').'.css')."'", 
+                                    $headerContent); 
 
         if (!file_put_contents($css, $cssContent)) {
             throw new Exception('Could not write to ' . $css);
@@ -245,7 +201,7 @@ class ViewManager
 
         // check if guest or layour already exported
         if(is_dir($bladeParentFolder) === false) {
-            mkdir($bladeParentFolder, 0755);
+            mkdir($bladeParentFolder, 0755, true);
         }
 
         // check if auth layout is already exported
@@ -253,6 +209,9 @@ class ViewManager
             throw new Exception ($bladeFilePath.' file already present, delete it first');
 
         $bladeContent = file_get_contents($bladeStub);
+        $bladeContent = str_replace('layout', 
+                                    "'".$this->layout."'", 
+                                    $bladeContent); 
 
         if (!file_put_contents($bladeFilePath, $bladeContent)) {
             throw new Exception('Could not write to ' . $bladeFilePath);
