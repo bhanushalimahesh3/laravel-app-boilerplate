@@ -2,7 +2,6 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
 
-        {{-- include head tag elements --}}
         @include(partialHeader)
 
     </head>

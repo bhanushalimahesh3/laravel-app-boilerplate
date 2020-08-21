@@ -17,8 +17,8 @@ return [
     ],
 
     'view' => [
-                    'layout' => 'layouts', // i.e rsources/view/layouts
-                    'partials' => 'partials', // i.e respurces/views/partials
+                    'layouts' => 'admin/layouts', // i.e rsources/view/layouts
+                    'partials' => 'admin/partials', // i.e respurces/views/partials
     ]
     
 ];

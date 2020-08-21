@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+    
+        @include(partialHeader)
+
+    </head>
+
+    <body>
+        @yield('content')
+    </body>
+
+    @include(partialJs)
+</html>
