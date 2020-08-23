@@ -1,5 +1,5 @@
 <?php
-namespace BhanushaliMahesh\TransformerPackage\Console;
+namespace BhanushaliMahesh\BoilerplatePackage\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\File;
@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 class TransformerCommand extends GeneratorCommand
 {
 
-    protected $name = 'transformer-package:transformer-create';
+    protected $name = 'boilerplate-package:transformer-create';
 
     protected $description = 'Create a new transformer class';
 
@@ -26,7 +26,7 @@ class TransformerCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace."\\".config('transformer_package.transformer.path').'\\'.self::DEFAULT_FOLDER;
+        return $rootNamespace."\\".config('boilerplate_package.transformer.path').'\\'.self::DEFAULT_FOLDER;
     }
 
 

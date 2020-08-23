@@ -1,10 +1,10 @@
 <?php
 
-namespace BhanushaliMahesh\TransformerPackage\Console;
+namespace BhanushaliMahesh\BoilerplatePackage\Console;
 
 use Exception;
 use Illuminate\Console\Command;
-use BhanushaliMahesh\TransformerPackage\ViewManager;
+use BhanushaliMahesh\BoilerplatePackage\ViewManager;
 
 class ViewCommand extends Command
 {
@@ -13,7 +13,7 @@ class ViewCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'transformer-package:view
+    protected $signature = 'boilerplate-package:view
         { type : blade or layout? }
         { name? : blade name }
         { layout? : layout name }';

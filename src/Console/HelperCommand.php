@@ -1,13 +1,13 @@
 <?php
 
-namespace BhanushaliMahesh\TransformerPackage\Console;
+namespace BhanushaliMahesh\BoilerplatePackage\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\File;
 
 class HelperCommand extends GeneratorCommand
 {
-    protected $name = 'transformer-package:helper-create';
+    protected $name = 'boilerplate-package:helper-create';
 
     protected $description = 'Create a new helper class';
 
@@ -23,7 +23,7 @@ class HelperCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . "\\" . config('transformer_package.helper.path');
+        return $rootNamespace . "\\" . config('boilerplate_package.helper.path');
     }
 
     public function handle()
@@ -100,6 +100,6 @@ class HelperCommand extends GeneratorCommand
 
     private function getTraitNamespace()
     {
-        return $this->rootNamespace(). config('transformer_package.trait.path') . '\ApiResponseTrait';
+        return $this->rootNamespace(). config('boilerplate_package.trait.path') . '\ResponseTrait';
     }
 }

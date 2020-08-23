@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class FormValidationCommand extends GeneratorCommand
 {
-    protected $name = 'transformer-package:form-request-create';
+    protected $name = 'boilerplate-package:form-request-create';
 
     protected $description = 'Create a new validation trait file';
 

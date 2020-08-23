@@ -1,23 +1,24 @@
 {
-    "name": "bhanushalimahesh3/transformers",
-    "description": "boilterplate code to generate transformers",
+    "name": "bhanushalimahesh3/laravel-app-boilerplate",
+    "description": "Boilerplate code for Laravel apps",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
-            "name": "bhanushalimahesh3",
+            "name": "Mahesh Bhanushali",
             "email": "bhanushali.mahesh3@gmail.com"
         }
     ],
     "require": {},
     "autoload": {
         "psr-4": {
-          "BhanushaliMahesh\\TransformerPackage\\": "src"
+          "BhanushaliMahesh\\BoilerplatePackage\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "BhanushaliMahesh\\TransformerPackage\\TransformerServiceProvider"
+                "BhanushaliMahesh\\BoilerplatePackage\\BoilerplateServiceProvider"
             ]
         }
     },      
