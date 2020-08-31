@@ -1,8 +1,7 @@
 <?php
 
-namespace BhanushaliMahesh\TransformerPackage;
+namespace BhanushaliMahesh\BoilerplatePackage;
 
-use View;
 use Exception;
 
 class ViewManager
@@ -87,7 +86,7 @@ class ViewManager
         }
 
         // check if guest or layour already exported
-        $layoutFolder = resource_path('views').'/'.config('transformer_package.view.layouts');
+        $layoutFolder = resource_path('views').'/'.config('boilerplate_package.view.layouts');
         
         if(is_dir($layoutFolder) === false) {
             mkdir($layoutFolder, 0755, true);
@@ -103,18 +102,18 @@ class ViewManager
         // replace header string
         $authContent = file_get_contents($authStub);    
         $authContent = str_replace('partialHeader', 
-                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.header')."'", 
+                                "'".str_replace('/', '.', config('boilerplate_package.view.partials').'.header')."'", 
                                 $authContent);
         $authContent = str_replace('partialJs', 
-                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.js')."'", 
+                                "'".str_replace('/', '.', config('boilerplate_package.view.partials').'.js')."'", 
                                 $authContent);                        
         
         $guestContent = file_get_contents($guestStub);
         $guestContent = str_replace('partialHeader', 
-                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.header')."'", 
+                                "'".str_replace('/', '.', config('boilerplate_package.view.partials').'.header')."'", 
                                 $guestContent);
         $guestContent = str_replace('partialJs', 
-                                "'".str_replace('/', '.', config('transformer_package.view.partials').'.js')."'", 
+                                "'".str_replace('/', '.', config('boilerplate_package.view.partials').'.js')."'", 
                                 $guestContent); 
 
         if (!file_put_contents($auth, $authContent)) {
@@ -142,7 +141,7 @@ class ViewManager
         }
 
         // check if guest or layour already exported
-        $partialFolder = resource_path('views').'/'.config('transformer_package.view.partials');
+        $partialFolder = resource_path('views').'/'.config('boilerplate_package.view.partials');
         if(is_dir($partialFolder) === false) {
             mkdir($partialFolder, 0755, true);
         }
@@ -159,7 +158,7 @@ class ViewManager
         $cssContent = file_get_contents($cssStub);
         $headerContent = file_get_contents($headerStub);
         $headerContent = str_replace('partialCss', 
-                                    "'".str_replace('/', '.', config('transformer_package.view.partials').'.css')."'", 
+                                    "'".str_replace('/', '.', config('boilerplate_package.view.partials').'.css')."'", 
                                     $headerContent); 
 
         if (!file_put_contents($css, $cssContent)) {

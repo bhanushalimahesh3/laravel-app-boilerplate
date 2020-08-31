@@ -11,32 +11,31 @@ class InstallBoilerplatePackage extends Command
 
     protected $signature = 'boilerplate-package:install';
 
-    protected $description = 'Install the Boilerplate Package';
+    protected $description = 'This command will publish configuration file';
 
     public function handle()
     {
 
-      $this->info('Checking if config file already exist, if yes delete');
+      $this->info('Checking if config file already exist, if yes delete the file');
+
         // destination path of the 
       $boilerplateConfig = config_path('boilerplate_package.php');
     
       // make sure we're starting from a clean state
       if (File::exists($boilerplateConfig)) {
-        $this->info('Deleting exisitng file....');
+        $this->info('Deleting exisiting configuration file....');
           
       }
 
-      $this->info('Installing BoilerplatePackage...');
-
       $this->info('Publishing configuration...');
-
 
       $this->call('vendor:publish', [
           '--provider' => "BhanushaliMahesh\BoilerplatePackage\BoilerplateServiceProvider",
           '--tag' => "config"
       ]);
 
-      $this->info('Installed BoilerplatePackage');
+      $this->info('configuration file published');
+      $this->info('Check your config folder');
       
     }
 }

@@ -20,6 +20,7 @@ class BoilerplateServiceProvider extends ServiceProvider
   public function boot()
   {
     
+    // run these command only via CLI
     if ($this->app->runningInConsole()) {
 
       $this->commands([
@@ -31,7 +32,7 @@ class BoilerplateServiceProvider extends ServiceProvider
       ]);
 
       
-      
+      // publish configuration file
       $this->publishes([
         __DIR__.'/config/boilerplate_package.php' => config_path('boilerplate_package.php')
       ], 'config');

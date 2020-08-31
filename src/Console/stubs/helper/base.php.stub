@@ -6,7 +6,7 @@ use DummyTraitNamespace;
 
 class BaseHelper
 {
-    use ApiResponseTrait;
+    use ResponseTrait;
 
     protected $_transformer;
 

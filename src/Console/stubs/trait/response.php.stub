@@ -3,7 +3,7 @@ namespace DummyNamespace;
 
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-trait ApiResponseTrait {
+trait ResponseTrait {
 
     public function respondSuccess($message, $data = [])
     {

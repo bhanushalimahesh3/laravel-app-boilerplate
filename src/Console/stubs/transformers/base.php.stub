@@ -10,12 +10,12 @@ abstract class Transformer
      * @param array $items
      * @return array
      */
-    public function transformCollection($items)
+    public function collection($items)
     {
         return $items->map([$this, 'transform']);
     }
 
-    public function transformArray($items)
+    public function array($items)
     {
         return array_map([$this, 'transform'], $items);
     }

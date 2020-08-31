@@ -1,6 +1,6 @@
 <?php
 
-namespace BhanushaliMahesh\TransformerPackage\Console;
+namespace BhanushaliMahesh\BoilerplatePackage\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\File;
@@ -29,13 +29,19 @@ class FormValidationCommand extends GeneratorCommand
 
     public function handle()
     {
+        $this->info('Creating trait file');
+
         parent::handle();
+
+        $this->info('Creating trait file completed!!!');
 
         $this->createValidationContract();
     }
 
     private function createValidationContract()
     {
+        $this->info('Creating base interface');
+
         $validationContract = $this->qualifyClass('BaseRequestHandler');        
         $validationContractPath = $this->getPath($validationContract);        
         $validationContractNamespace = $this->getNamespace($validationContract);
@@ -44,8 +50,9 @@ class FormValidationCommand extends GeneratorCommand
         if (!File::exists($validationContractPath)) {
             $content = file_get_contents(__DIR__ . self::STUB_FOLDER . 'base.php.stub');
             $content = str_replace('DummyNamespace', $validationContractNamespace, $content);
-            file_put_contents($validationContractPath, $content);        
-            
+            file_put_contents($validationContractPath, $content);  
         }
+
+        $this->info('Creating base interface completed!!!');
     }
 }

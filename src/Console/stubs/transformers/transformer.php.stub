@@ -6,7 +6,7 @@ use DummyExtend;
 
 class DummyClass extends Transformer
 {
-    public function transform($item)
+    public function item($item)
     {
 
     }

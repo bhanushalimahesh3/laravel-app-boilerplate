@@ -28,13 +28,16 @@ class HelperCommand extends GeneratorCommand
 
     public function handle()
     {
+        $this->info('Creating helper class');
         parent::handle();
+        $this->info('Creating helper class completed!!!');
 
         $this->replaceExtendClassPlaceholder();
 
         $this->createResponseTrait();
 
         $this->createHelperBase();
+
     }
 
     protected function replaceExtendClassPlaceholder()
@@ -71,10 +74,15 @@ class HelperCommand extends GeneratorCommand
     
         // make sure we're starting from a clean state
         if (!File::exists($helperBaseClassPath)) {
+
+            $this->info('Creating BaseHelper class');
+
             $content = file_get_contents(__DIR__ . self::STUB_FOLDER . 'base.php.stub');
             $content = str_replace('DummyNamespace', $helperBaseClassNamespace, $content);
             $content = str_replace('DummyTraitNamespace', $traitNamespace, $content);
-            file_put_contents($helperBaseClassPath, $content);        
+            file_put_contents($helperBaseClassPath, $content);   
+
+            $this->info('Creating BaseHelper class completed');   
             
         }
     }
@@ -87,13 +95,14 @@ class HelperCommand extends GeneratorCommand
 
             // make sure we're starting from a clean state
         if (!File::exists($traitPath)) {
+            $this->info('Creating ResponseTrait');
 
             $this->makeDirectory($traitPath);
-
             $content = file_get_contents(__DIR__ . '/stubs/trait/response.php.stub');
             $content = str_replace('DummyNamespace', $traitRootNamespace, $content);
-            file_put_contents($traitPath, $content);        
+            file_put_contents($traitPath, $content); 
             
+            $this->info('Creating ResponseTrait completed!!!');            
         }
 
     }

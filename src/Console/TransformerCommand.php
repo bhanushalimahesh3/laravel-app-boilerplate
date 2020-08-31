@@ -32,13 +32,17 @@ class TransformerCommand extends GeneratorCommand
 
     public function handle()
     {
+        $this->info('Creating transformer class');
+
         parent::handle();
 
-        $this->replaceExtendPlaceholder();
+        $this->info('Creating transformer completed!!!');
+
+        $this->replaceExtendClassPlaceholder();
     }
 
 
-    protected function replaceExtendPlaceholder()
+    protected function replaceExtendClassPlaceholder()
     {
         // replace use class.
         $usePlaceholder = $this->qualifyClass(self::DEFAULT_FOLDER);
@@ -53,16 +57,16 @@ class TransformerCommand extends GeneratorCommand
 
         $content = str_replace('DummyExtend', $usePlaceholder, $content);
        
-        // Update the file content with additional data (regular expressions).
-
         file_put_contents($path, $content);
 
-        $this->createTransformBase();
+        $this->createTransformerAbstractClass();
     }
 
 
-    private function createTransformBase()
+    private function createTransformerAbstractClass()
     {
+        $this->info('Copying Transformer abstract class');
+
         $transformerBaseClass = $this->qualifyClass(self::DEFAULT_FOLDER);        
         $transformerBaseClassPath = $this->getPath($transformerBaseClass);        
         $transformerBaseClassNamespace = $this->getNamespace($transformerBaseClass);
@@ -72,8 +76,10 @@ class TransformerCommand extends GeneratorCommand
             $content = file_get_contents(__DIR__.self::STUB_FOLDER.'base.php.stub');
             $content = str_replace('DummyNamespace', $transformerBaseClassNamespace, $content);
             file_put_contents($transformerBaseClassPath, $content);        
-            
         }
+
+        $this->info('Copying Transformer abstract class completed!!!');
+
     } //end
 
 

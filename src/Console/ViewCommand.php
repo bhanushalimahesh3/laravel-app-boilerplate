@@ -35,13 +35,16 @@ class ViewCommand extends Command
         $manager = new ViewManager();
 
         try {
+            $this->info('Creating a view file');
+
             $path = $manager
                 ->setType($this->argument('type'))
                 ->setName($this->argument('name') ?? '')
                 ->setLayout($this->argument('layout') ?? '')
                 ->convertStubs();
 
-            return $this->info('File created at ' . $path);
+            $this->info('Creating a view file completed!!!');
+            
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
