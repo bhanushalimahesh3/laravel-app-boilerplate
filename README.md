@@ -12,8 +12,10 @@ With this package end goal is to save time and automate process on following ite
 * View
 
 To install package run following command in terminal from root the laravel project
+
 ```composer install bhanushalimahesh3/laravel-app-boilerplate```
 
 After package is installed, run following command to list out all commands of this package
+
 ```php artisan list```
 
