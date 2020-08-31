@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class HelperCommand extends GeneratorCommand
 {
-    protected $name = 'boilerplate-package:helper-create';
+    protected $name = 'boilerplate-package:helper';
 
     protected $description = 'Create a new helper class';
 

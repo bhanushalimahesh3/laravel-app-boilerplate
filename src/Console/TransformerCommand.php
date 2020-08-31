@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 class TransformerCommand extends GeneratorCommand
 {
 
-    protected $name = 'boilerplate-package:transformer-create';
+    protected $name = 'boilerplate-package:transformer';
 
     protected $description = 'Create a new transformer class';
 
