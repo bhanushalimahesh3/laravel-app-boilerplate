@@ -19,7 +19,7 @@ After package is installed, run following command to list out all commands of th
 
 ```php artisan list```
 
-Following are this packages command
+Following are this package commands
 
 ```
    boilerplate-package:install
@@ -29,3 +29,4 @@ Following are this packages command
    boilerplate-package:view
 ```
 
+Run command ```php artisan boilerplate-package:install```, with this command configuration file will be published. Now check your config folder and you should see **boilerplate_package.php** file is created. 
