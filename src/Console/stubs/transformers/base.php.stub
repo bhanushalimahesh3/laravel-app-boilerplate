@@ -12,13 +12,13 @@ abstract class Transformer
      */
     public function collection($items)
     {
-        return $items->map([$this, 'transform']);
+        return $items->map([$this, 'item']);
     }
 
     public function array($items)
     {
-        return array_map([$this, 'transform'], $items);
+        return array_map([$this, 'item'], $items);
     }
 
-    public abstract function transform($item);
+    public abstract function item($item);
 }
