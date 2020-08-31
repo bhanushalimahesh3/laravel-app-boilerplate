@@ -19,3 +19,12 @@ After package is installed, run following command to list out all commands of th
 
 ```php artisan list```
 
+Following are this packages command
+
+```boilerplate-package:install
+   boilerplate-package:transformer-create
+   boilerplate-package:helper-create
+   boilerplate-package:form-request-create
+   boilerplate-package:view
+```
+
