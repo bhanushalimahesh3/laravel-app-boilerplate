@@ -23,9 +23,9 @@ Following are this packages command
 
 ```
    boilerplate-package:install
-   boilerplate-package:transformer-create
-   boilerplate-package:helper-create
-   boilerplate-package:form-request-create
+   boilerplate-package:transformer
+   boilerplate-package:helper
+   boilerplate-package:form-request
    boilerplate-package:view
 ```
 
